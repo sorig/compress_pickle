@@ -27,6 +27,24 @@ def read_tar_pickle(tar_path, pickle_path):
         return pickle.load(f)
 
 
+def read_tar_pickles(tar_path, match_string='.*pickle(\.gz)?'):
+    """ Return a list of extracted and unpickled objects with a path in the tar
+        file matching the match_string.
+    """
+    result = []
+
+    with tarfile.open(tar_path, 'r:gz') as tar:
+        files = list(filter(
+            lambda s: re.match(match_string, s), tar.getnames()
+        ))
+
+        for file in files:
+            f = tar.extractfile(file)
+            result.append(pickle.load(f))
+
+    return result
+
+
 def list_tar_file_contents(tar_path, filter_match_string='.*pickle(\.gz)?'):
     """ Returns a list of contents of gzipped tar archive """
     with tarfile.open(tar_path, 'r:gz') as tar:
