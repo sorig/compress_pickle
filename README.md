@@ -23,7 +23,9 @@ Firstly, import the module
 ### List pickle files in a tar archive:
 
 ```
->>> compress_pickle.list_tar_file_contents('myarchive.tar.gz', '.*pickle')
+>>> compress_pickle.list_tar_file_contents(
+        'myarchive.tar.gz', filter_match_string='.*pickle'
+    )
 ['path/to/file/in/archive/obj.pickle']
 ```
 
@@ -31,8 +33,8 @@ Firstly, import the module
 
 ```
 >>> obj_from_tar = compress_pickle.read_tar_pickle(
-    'myarchive.tar.gz', 
-    'path/to/file/in/archive/obj.pickle'
-)
+        'myarchive.tar.gz', 
+        'path/to/file/in/archive/obj.pickle'
+    )
 ```
 
