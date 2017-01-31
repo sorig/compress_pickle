@@ -1,5 +1,11 @@
 # Functions to read/write to/from gzipped pickle files and tar archives
 
+## Install
+
+```
+pip install git+https://github.com/sorig/compress_pickle.git
+```
+
 ## Examples
 
 Firstly, import the module
